@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Title name",
+        "dates": [],
+        "exercises": [
+            {
+                "name": "Exercise Name",
+                "id": "",
+                "type": "strength",
+                "sets": "3",
+                "reps": "3",
+                "notes": "jshdsajdhaj",
+                "completed": false
+            }
+        ]
+    }
+]
