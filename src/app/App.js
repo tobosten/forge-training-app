@@ -30,7 +30,7 @@ export default function App() {
   const setWorkoutHistory = useWorkoutStore((state) => state.setWorkoutHistory);
   const [isWorkoutActive, setIsWorkoutActive] = useState(false);
 
- /*  AsyncStorage.clear(); */
+  /* AsyncStorage.clear(); */
 
   const checkNextWorkout = () => {
     let uncompletedWorkoutList = workoutList?.dates?.filter(item => !item.completed) || [];
@@ -191,10 +191,10 @@ export default function App() {
                   </StatisticTrackerComponent></>
               ) : (
                 <StatisticTrackerComponent
-                  title={"Keep forging yourself and create a new workout!"}>
+                  title={workoutHistory.length > 0 ? "Keep forging yourself and create a new workout!" : "Create your own workout!"}>
                   <View style={appStyles.nextUpTextContainer}>
                     <Text style={appStyles.nextUpTitle}>
-                      {"WELL DONE!"}
+                      {workoutHistory.length > 0 ? "WELL DONE!" : "Get active!"}
                     </Text>
                   </View>
                   <View style={appStyles.openSessionButtonContainer}>

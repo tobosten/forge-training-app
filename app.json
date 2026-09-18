@@ -16,7 +16,8 @@
         "foregroundImage": "",
         "backgroundImage": "",
         "monochromeImage": ""
-      }
+      },
+      "package": "rizium.forge"
     },
     "web": {},
     "plugins": [
@@ -24,6 +25,12 @@
       "expo-status-bar",
       "@react-native-community/datetimepicker",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "32861297-66c8-4b21-ab6b-5bfe9e2919ec"
+      }
+    }
   }
 }

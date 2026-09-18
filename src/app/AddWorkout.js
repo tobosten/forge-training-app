@@ -37,6 +37,7 @@ export default function AddWorkout() {
   const scrollViewRef = useRef(null);
   const elementRef = useRef(0);
   const fashionArray = ["100", "90", "80", "70", "80", "90", "100"];
+  const currentDate = new Date();
 
   useEffect(() => {
     setAddExercise({});
@@ -72,10 +73,17 @@ export default function AddWorkout() {
     const everyDays = Number(workoutDates.every);
     const durationDays = Number(workoutDates.duration) * 7;
 
+    /* Sets first date in array */
+    let firstDate = new Date(workoutDates.startDate);
+    firstDate.setHours(23, 59, 59, 999);
+    workoutDates.array.push({ nextDate: firstDate.toISOString(), completed: false });
+
     for (let i = everyDays; i <= durationDays; i += everyDays) {
       /* Pushes each date to workoutDatesArray */
-      let nextDate = new Date(new Date(workoutDates.startDate).getTime() + i * 24 * 60 * 60 * 1000).toISOString();
-      workoutDates.array.push({ nextDate, completed: false });
+      let nextDate = new Date(workoutDates.startDate);
+      nextDate.setDate(nextDate.getDate() + i);
+      nextDate.setHours(23, 59, 59, 999)
+      workoutDates.array.push({ nextDate: nextDate.toISOString(), completed: false });
     }
 
     console.log("Workout created:", {
@@ -205,7 +213,7 @@ export default function AddWorkout() {
                 mode="date"
                 timeZoneName={'Europe/Prague'}
                 display="spinner"
-                minimumDate={new Date()}
+                minimumDate={currentDate}
                 value={workoutDates.startDate ? new Date(workoutDates.startDate) : new Date()}
                 onValueChange={(event, date) => {
                   if (!date) return;
